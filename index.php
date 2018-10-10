@@ -1,0 +1,1 @@
+<?php echo "Welcome To Bet Alert Module"; ?>
