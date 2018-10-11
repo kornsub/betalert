@@ -4,8 +4,11 @@ $access_token = "DBSY+rfxqfzGO26aJtKFoVPUqimxWuZ7DZaZX0kpltZVZ+sQrNMG+9qb1KjELbq
 
 			// Get text sent
 
-			$text = "Report \n".$_GET['text'];
-			$To = "U50db648d0798f19ff5708e8a4e992b08";
+			//$text = "Report \n".$_GET['text'];
+			//$To = "U50db648d0798f19ff5708e8a4e992b08";
+
+			$text = "Robot Test Push Massage ?";
+			$To = "C2f6acfc9f271f5422b1a4c1eb71b27b7";
 
 			// Build message to reply back
 			$messages = [
