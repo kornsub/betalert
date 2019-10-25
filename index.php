@@ -16,7 +16,7 @@ if (!is_null($events['events'])) {
 			// Get text sent
 
 			$text = "User ID is : ".$event['source']['userId'] ."Group Id : ".$event['source']['groupId'];
-			//$text = $event['message']['text'];
+			$text .= $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
