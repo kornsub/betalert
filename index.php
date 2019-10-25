@@ -22,9 +22,22 @@ if (!is_null($events['events'])) {
 			
 			
 			$check_msg = explode(":",$msg);
-			if( count($check_msg) > 1 ){
-				if($check_msg[0] == 'ยกเลิกบิล'){
+			if( count($check_msg) == 3 ){
+				if($check_msg[0] == 'ยกเลิกบิล' && is_numeric($check_msg[1])){
 					$text = "ยกเลิกบิล ".$check_msg[1]." เรียบร้อยแล้ว";
+					
+					$url = 'http://infi8808.com/cancel_bill?id='.$check_msg[1];
+					$ch = curl_init($url);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					$result = curl_exec($ch);
+					curl_close($ch);
+					
+				}else{
+					$text = "กรอกรูปแบบผิด";
 				}
 			}elseif($msg == 'บอท'){
 				$text = "ว่าไง";
