@@ -15,12 +15,15 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 
-			$text = "User ID is : ".$event['source']['userId'] ."Group Id : ".$event['source']['groupId'];
+			//$text = "User ID is : ".$event['source']['userId'] ."Group Id : ".$event['source']['groupId'];
 			
+			$text = "ว่าไง";
 			$msg = $event['message']['text'];
 			$check_msg = explode(":",$msg);
-			if( count($check_msg) > 1 ){
-				
+			if( count($check_msg) == 2 ){
+				if($check_msg[0] == 'ยกเลิก'){
+					$text = "ยกเลิก ".$check_msg[1];
+				}
 			}
 			// Get replyToken
 			$replyToken = $event['replyToken'];
