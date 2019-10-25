@@ -16,7 +16,12 @@ if (!is_null($events['events'])) {
 			// Get text sent
 
 			$text = "User ID is : ".$event['source']['userId'] ."Group Id : ".$event['source']['groupId'];
-			$text .= $event['message']['text'];
+			
+			$msg = $event['message']['text'];
+			$check_msg = explode(":",$msg);
+			if( count($check_msg) > 1 ){
+				
+			}
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
