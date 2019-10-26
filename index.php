@@ -21,6 +21,8 @@ if (!is_null($events['events'])) {
 			
 			//print_r($event);
 			
+			$check_msg = explode(":",$msg);
+			
 			if( count($check_msg) == 2 ){
 				if($check_msg[0] == 'รายงานยกเลิกบิล'){// รายงานยกเลิกบิล:25-09-2019
 					$url = 'http://infi8808.com/report_cancel_bill?date='.$check_msg[1];
@@ -33,14 +35,13 @@ if (!is_null($events['events'])) {
 					$result = curl_exec($ch);
 					curl_close($ch);
 					
-					//$res = json_decode($result, true);
+					$res = json_decode($result, true);
 					
-					//$text = $res['text'];
-					$text = $url;
+					$text = $res['text'];
+					//$text = $url;
 				}
 			}
 			
-			$check_msg = explode(":",$msg);
 			if( count($check_msg) == 3 ){
 				if($check_msg[0] == 'ยกเลิกบิล' && is_numeric($check_msg[1])){
 					$text = "ยกเลิกบิล ".$check_msg[1]." เรียบร้อยแล้ว";
