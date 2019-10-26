@@ -19,7 +19,25 @@ if (!is_null($events['events'])) {
 			//$text = "User ID is : ".$event['source']['userId'] ."Group Id : ".$event['source']['groupId'];
 			
 			
-			print_r($event);
+			//print_r($event);
+			
+			if( count($check_msg) == 2 ){
+				if($check_msg[0] == 'รายงานยกเลิกบิล'){// รายงานยกเลิกบิล:25-09-2019
+					$url = 'http://infi8808.com/report_cancel_bill?date='.$check_msg[1];
+					$ch = curl_init($url);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					$result = curl_exec($ch);
+					curl_close($ch);
+					
+					$res = json_decode($result, true);
+					
+					$text = $res['text'];
+				}
+			}
 			
 			$check_msg = explode(":",$msg);
 			if( count($check_msg) == 3 ){
@@ -39,8 +57,19 @@ if (!is_null($events['events'])) {
 				}else{
 					$text = "กรอกรูปแบบผิด";
 				}
-			}elseif($msg == 'บอท'){
-				$text = "ว่าไง";
+			}else{
+				if($msg == 'บอท'){
+					$text = "ว่าไง";
+				}
+				if($msg == 'ไอ้บอท'){
+					$text = "อะไรหรอครับ";
+				}
+				if($msg == 'ทำไมเมื่อวานเองไม่ยกเลิกบิล'){
+					$text = "...อ้อเค้าน่าจะใส่ช่องผิด";
+				}
+				if($msg == 'เองทำให้ข้าดูแย่'){
+					$text = "ขอประทานอภัย";
+				}
 			}
 			
 			if( $text != '' ){
