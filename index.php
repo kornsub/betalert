@@ -19,7 +19,7 @@ if (!is_null($events['events'])) {
 			//$text = "User ID is : ".$event['source']['userId'] ."Group Id : ".$event['source']['groupId'];
 			
 			
-			
+			print_r($event);
 			
 			$check_msg = explode(":",$msg);
 			if( count($check_msg) == 3 ){
