@@ -36,7 +36,7 @@ if (!is_null($events['events'])) {
 					//$res = json_decode($result, true);
 					
 					//$text = $res['text'];
-					$text = $result;
+					$text = $url;
 				}
 			}
 			
