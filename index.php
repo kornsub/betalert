@@ -44,7 +44,7 @@ if (!is_null($events['events'])) {
 			
 			if( count($check_msg) == 3 ){
 				if($check_msg[0] == 'ยกเลิกบิล' && is_numeric($check_msg[1])){
-					$text = "ยกเลิกบิล ".$check_msg[1]." เรียบร้อยแล้ว";
+					//$text = "ยกเลิกบิล ".$check_msg[1]." เรียบร้อยแล้ว";
 					
 					$url = 'http://infi8808.com/cancel_bill?id='.$check_msg[1];
 					$ch = curl_init($url);
@@ -55,6 +55,16 @@ if (!is_null($events['events'])) {
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					$result = curl_exec($ch);
 					curl_close($ch);
+					
+					$res = json_decode($result, true);
+					
+					if($res['status'] == 0){
+						$text = "ยกเลิกบิล ".$check_msg[1]." เรียบร้อยแล้ว";
+					}elseif($res['status'] == 1){
+						$text = "บอลกำลังแข่งขันยกเลิกไม่ได้";
+					}elseif($res['status'] == 3){
+						$text = "บอลแข่งจบแล้วยกเลิกไม่ได้";
+					}
 					
 				}else{
 					$text = "กรอกรูปแบบผิด";
