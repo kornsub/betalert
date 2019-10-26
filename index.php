@@ -33,9 +33,10 @@ if (!is_null($events['events'])) {
 					$result = curl_exec($ch);
 					curl_close($ch);
 					
-					$res = json_decode($result, true);
+					//$res = json_decode($result, true);
 					
-					$text = $res['text'];
+					//$text = $res['text'];
+					$text = $result;
 				}
 			}
 			
