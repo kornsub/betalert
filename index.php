@@ -79,7 +79,7 @@ if (!is_null($events['events'])) {
 				}
 				
 				if($msg == 'บอทขอเลขไอดี'){
-					echo "Group Id : ".$event['source']['groupId'];
+					$text = "Group Id : ".$event['source']['groupId'];
 				}
 				/*
 				if($msg == 'เองทำให้ข้าดูแย่'){
